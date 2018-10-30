@@ -15,6 +15,7 @@ import { BreadCrumbsComponent } from './components/shared/bread-crumbs/bread-cru
 
 //Rutas
 import { appRoute } from './app.routing';
+import { PagesComponent } from './components/pages/pages.component';
 appRoute
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ appRoute
     Graficas1Component,
     HeaderComponent,
     SidebarComponent,
-    BreadCrumbsComponent
+    BreadCrumbsComponent,
+    PagesComponent
   ],
   imports: [
     BrowserModule,
