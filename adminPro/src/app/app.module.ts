@@ -13,17 +13,16 @@ import { appRoute } from './app.routing';
 //Modulos
 import { PagesModule } from './components/pages/pages.module';
 import { FormsModule } from '@angular/forms';
+import { GraficaDonaComponent } from './components/grafica-dona/grafica-dona.component';
 
 
-
-
-appRoute
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
     NoPageFoundComponent,
+    GraficaDonaComponent,
     
   ],
   imports: [

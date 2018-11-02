@@ -7,7 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { pagesRoute } from './pages.routing';
 import { FormsModule } from '@angular/forms'
 import { IncrementadorComponent } from '../incrementador/incrementador.component';
-
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
     declarations:[
@@ -27,7 +27,8 @@ import { IncrementadorComponent } from '../incrementador/incrementador.component
     imports: [
         SharedModule,
         pagesRoute,
-        FormsModule
+        FormsModule,
+        ChartsModule
 
     ],
     providers:[]
