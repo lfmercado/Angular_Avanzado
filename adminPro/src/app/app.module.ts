@@ -9,10 +9,12 @@ import { NoPageFoundComponent } from './components/shared/no-page-found/no-page-
 //Rutas
 import { appRoute } from './app.routing';
 
-
+//Servicios
+import { SettingsService } from './services/settings.service';
 //Modulos
 import { PagesModule } from './components/pages/pages.module';
 import { FormsModule } from '@angular/forms';
+
 
 
 
@@ -32,7 +34,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule
 
   ],
-  providers: [],
+  providers: [SettingsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
