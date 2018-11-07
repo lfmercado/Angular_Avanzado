@@ -7,10 +7,10 @@ import { Component, OnInit, Input, EventEmitter, Output, ViewChild, ElementRef }
 })
 export class IncrementadorComponent implements OnInit {
 
-  @Input() leyenda: string = 'Leyenda';
-  @Input() porcentaje: number = 50;
-  @ViewChild('txtporcentaje') txtporcentaje: ElementRef
-  @Output() cambioValor: EventEmitter<number> = new EventEmitter();
+  @Input() leyenda: string = 'Leyenda'; //Entrada 
+  @Input() porcentaje: number = 50;     //Entrada 
+  @ViewChild('txtporcentaje') txtporcentaje: ElementRef   //Hacer Referencia a un elemento HTML
+  @Output() cambioValor: EventEmitter<number> = new EventEmitter(); //Salida
   constructor() {   
     console.log('Leyenda', this.leyenda);
     console.log('Progreso', this.porcentaje);

@@ -8,3 +8,15 @@ como generar un componente
 
     **ng serve -o por medio de este comando arrancamos el servidor y se abre el navegador de manera automatica
     
+    Input   --> Componente padre le pasa datos al componente hijo
+    Output  --> Componente Hijo le pasa datos al padre
+
+    Cuando se quiere hacer un input las variables tipo input se declaran en el componente hijo para indicarle al 
+    componente que se va a recibir datos del componente padre.
+    de esta manera cuando se inserta la etiqueta del componente hijo dentro del padre por medio de esta se le pasan los
+    parametros indicandole de donde salen los datos
+
+    Cuando se quiere hacer un Output el componente hijo debe de tener una varible tipo output de tipo EventEmitter que es la
+    encargada de emitir datos, para la emision de esos datos se hace por medio de la misma etiqueta que para resivirlos, la
+    unica condicion son los nombres de las varibles ya que el componente padre y el componente hijo deben de tener el mismo
+    nombre de variables o darles un seudonimo para que se pueda saber donde se van a almacenar los datos que esta emitiendo el hijo
