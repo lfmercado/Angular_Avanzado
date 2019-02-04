@@ -11,7 +11,7 @@ mongoose.connect('mongodb://localhost:27017/hospitalDB')
             console.log('Conexion a la base de datos se ha realiazado con exito!!');
             //Creando conexion al servidor
             app.listen(port, ()=>{
-                console.log('Conexion al servidor establecida con exito!!');
+                console.log('\x1b[32m%s\x1b[0m ', 'Express server corriendo en el puerto: 3000');
             })
         })
         .catch( err =>console.log(err));

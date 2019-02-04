@@ -13,13 +13,15 @@ app.use(bodyParser.urlencoded({extends:false}));
 app.use(bodyParser.json());
 
 
+//importar rutas
+var appRoutes = require('./routes/appRoute');
+var userRoute =  require('./routes/usuarioRoute');
+
+
 //Rutas
-app.get('/', (req, res, next) =>{
-    res.status(200).send({
-        ok: true,
-        mensaje: 'Peticion Realizada Correctamente'
-    });
-});
+app.use('/', appRoutes);
+app.use('/user', userRoute);
+
 
 
 //Cors
@@ -30,8 +32,4 @@ app.use((req, res, next) =>{
     res.header('Allow', 'GET, POST, PUT, DELETE, OPTIONS');
     next();
 });
-
-//Escuchar peticiones
-app.listen(3000, ()=>{
-    console.log('\x1b[32m%s\x1b[0m ', 'Express server corriendo en el puerto: 3000');
-});
+module.exports = app;
