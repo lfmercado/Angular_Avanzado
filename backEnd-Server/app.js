@@ -14,14 +14,11 @@ app.use(bodyParser.json());
 
 
 //importar rutas
-var appRoutes = require('./routes/appRoute');
-var userRoute =  require('./routes/usuarioRoute');
+var userRoutes =  require('./routes/user.route');
 
 
 //Rutas
-app.use('/', appRoutes);
-app.use('/user', userRoute);
-
+app.use('/api', userRoutes);
 
 
 //Cors
