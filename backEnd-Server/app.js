@@ -15,10 +15,12 @@ app.use(bodyParser.json());
 
 //importar rutas
 var userRoutes =  require('./routes/user.route');
-
-
+var hospitalRoutes = require('./routes/hospital.route');
+var medicoRoutes = require('./routes/medico.ruote');
 //Rutas
 app.use('/api', userRoutes);
+app.use('/api', hospitalRoutes);
+app.use('/api', medicoRoutes)
 
 
 //Cors
