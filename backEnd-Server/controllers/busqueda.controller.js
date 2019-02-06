@@ -3,6 +3,40 @@ var Hospital = require('../models/hospital.model');
 var Medico = require('../models/medico.model');
 var User = require('../models/user.model');
 
+function busquedaEspecifica(req, res){
+    var tabla = req.params.tabla;
+    var busqueda = req.params.busqueda;
+    var regex = new RegExp(busqueda, 'i');
+    var promesa;
+    switch (tabla) {
+        case 'usuarios':
+            promesa = buscarUsuarios(busqueda, regex);            
+            break;
+        case 'hospitales':
+            promesa = buscarHospitales(busqueda, regex);
+            break;
+        case 'medicos':
+            promesa = buscarMedicos(busqueda, regex);
+            break;
+        default:
+            return res.status(400).send({
+                mensaje: 'Busqueda no permitida',
+                err : 'tabla/coleccion no valida'
+            });
+            break;
+    }
+
+    promesa.then( data =>{
+        return res.status(200).send({
+            ok: 'true',
+            [tabla]: data
+        });
+    });
+
+}
+
+
+
 function buscarTodo(req, res){
     var busqueda = req.params.busqueda;
    
@@ -56,5 +90,6 @@ function buscarUsuarios(busqueda, regex){
 }
 
 module.exports ={ 
-    buscarTodo
+    buscarTodo,
+    busquedaEspecifica
 }

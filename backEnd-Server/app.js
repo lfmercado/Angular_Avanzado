@@ -3,10 +3,11 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 
+var fileUpload = require('express-fileupload');
 
 //inicializar variables
 var app = express();
-
+app.use(fileUpload());
 
 //Middlewares
 app.use(bodyParser.urlencoded({extends:false}));
@@ -18,11 +19,14 @@ var userRoutes =  require('./routes/user.route');
 var hospitalRoutes = require('./routes/hospital.route');
 var medicoRoutes = require('./routes/medico.ruote');
 var busquedaRoutes = require('./routes/busqueda.route');
+var fileUploadRoutes = require('./routes/fileUpload.route');
+
 //Rutas
 app.use('/api', userRoutes);
 app.use('/api', hospitalRoutes);
 app.use('/api', medicoRoutes);
 app.use('/api', busquedaRoutes);
+app.use('/api', fileUploadRoutes);
 
 
 //Cors
