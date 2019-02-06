@@ -8,17 +8,28 @@ var path = require('path'); //para reconocer la extensión de los archivos
 
 //Obtener todos los usuarios
 function getHospitals(req, res) {
-    Hospital.find({}).exec(
+    var desde = req.query.desde || 0;
+    desde = Number(desde);
+    Hospital.find({}).skip(desde).limit(5).populate('usuario', '_id nombre email').exec(
         (err, result) => {
+
             if (err) return res.status(500).send({
                 'mensaje': 'No se pudieron recuperar los hospitales',
                 'error': err
             });
-           return res.status(200).send({
+            Hospital.count((err, count) =>{
+                if (err) return res.status(500).send({
+                    'mensaje': 'No se pudieron recuperar los hospitales',
+                    'error': err
+                });
+               return res.status(200).send({
                 ok: true,
+                totalHospital: count,
                 mensaje: 'Peticion Realizada Correctamente',
                 Hospitales: result,
+            }); 
             });
+           
         });
 }
 
@@ -81,7 +92,7 @@ function getHospital(req, res) {
                 mensaje: 'Peticion Realizada Correctamente',
                 Hospital: result,
             });
-        });
+        }).populate('usuario', '_id nombre email');
 }
 
 

@@ -17,10 +17,12 @@ app.use(bodyParser.json());
 var userRoutes =  require('./routes/user.route');
 var hospitalRoutes = require('./routes/hospital.route');
 var medicoRoutes = require('./routes/medico.ruote');
+var busquedaRoutes = require('./routes/busqueda.route');
 //Rutas
 app.use('/api', userRoutes);
 app.use('/api', hospitalRoutes);
-app.use('/api', medicoRoutes)
+app.use('/api', medicoRoutes);
+app.use('/api', busquedaRoutes);
 
 
 //Cors

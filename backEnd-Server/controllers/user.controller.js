@@ -106,7 +106,7 @@ function login(req, res){
     var params = req.body;
     User.findOne({email: params.correo}, (err, result)  =>{
         if(err) return res.status(500).send({mensaje: 'Error al buscar el usuario'});
-        if(!result) return res.status(400).send({mensaje: 'El usuario con el Id ' + id+ ' no existe'});
+        if(!result) return res.status(400).send({mensaje: 'Usuario y/o contraseña incorrectos'});
         if(bcrypt.compareSync(params.password, result.password)){
         var tokken = jwt.createTokken(result);
         result.password = undefined;

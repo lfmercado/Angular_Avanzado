@@ -6,25 +6,32 @@ var Medico = require('../models/medico.model');
 var fs = require('fs'); //metodo que permite subir archivos
 var path = require('path'); //para reconocer la extensión de los archivos
 
-function home(req, res) {
-    res.status(200).send({
-        message: 'Hola Mundo Desde EL Controlador De Usuario'
-    });;
-}
 
 //Obtener todos los usuarios
 function getMedicos(req, res) {
-    Medico.find({}).exec(
+    var desde = req.query.desde || 0;
+    desde = Number(desde);
+    Medico.find({}).skip(desde).limit(5).populate('usuario', '_id nombre email').populate('hospital').exec(
         (err, result) => {
+            var desde = req.query.desde || 0;
+            desde = Number(desde);
             if (err) return res.status(500).send({
                 'mensaje': 'No se pudieron recuperar los medicoes',
                 'error': err
             });
-           return res.status(200).send({
-                ok: true,
-                mensaje: 'Peticion Realizada Correctamente',
-                Medico: result,
-            });
+
+            Medico.count((err, count) =>{
+                if (err) return res.status(500).send({
+                    'mensaje': 'No se pudieron recuperar los hospitales',
+                    'error': err
+                });
+                return res.status(200).send({
+                    ok: true,
+                    totalMedicos: count,
+                    mensaje: 'Peticion Realizada Correctamente',
+                    Medico: result,
+                }); 
+            });         
         });
 }
 
