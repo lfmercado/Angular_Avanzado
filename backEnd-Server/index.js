@@ -5,8 +5,9 @@ var app = require('./app');
 var port = 3800;
 
 mongoose.Promise = global.Promise;
+mongoose.set('useCreateIndex', true);
                 //Conexion a la base de datos
-mongoose.connect('mongodb://localhost:27017/hospitalDB')
+mongoose.connect('mongodb://localhost:27017/hospitalDB', { useNewUrlParser: true })
         .then(()=>{
             console.log('Conexion a la base de datos se ha realiazado con exito!!');
             //Creando conexion al servidor
