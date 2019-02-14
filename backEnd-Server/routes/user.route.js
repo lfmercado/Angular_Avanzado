@@ -12,4 +12,6 @@ api.post('/save-user', UserController.saveUser);
 api.put('/update-user/:id',mdAuth.ensureAuth, UserController.updateUser);
 api.delete('/delete-user/:id',mdAuth.ensureAuth, UserController.deleteUser);
 api.post('/login', UserController.login);
+api.post('/login-google', UserController.loginGoogle);
 module.exports = api;
+
