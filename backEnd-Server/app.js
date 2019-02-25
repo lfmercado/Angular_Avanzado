@@ -10,7 +10,7 @@ var app = express();
 app.use(fileUpload());
 
 //Middlewares
-app.use(bodyParser.urlencoded({extends:false}));
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 //server index es para poder visualizar toda un directorio con los archivos.
